@@ -9,3 +9,6 @@ run:
 
 down:
 	@docker compose down --remove-orphans
+
+test:
+	@docker exec roman-app php artisan test
