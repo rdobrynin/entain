@@ -34,6 +34,7 @@
                         </div>
                     </div>
                 </form>
+                <div class="text-center mb-2"><a href="{{ route('register') }}">Register</a></div>
             </div>
         </div>
     </div>

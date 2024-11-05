@@ -18,6 +18,11 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('error') }}
+                        </div>
+                    @endif
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
                     <div class="mb-3">
@@ -38,6 +43,7 @@
                         </div>
                     </div>
                 </form>
+                    <div class="text-center mb-2"><a href="{{ route('login') }}">Login</a></div>
             </div>
         </div>
     </div>
