@@ -31,6 +31,15 @@ class AuthController extends Controller
         );
         $this->userService->create($userDto);
 
+        $credentials = [
+            'email' => $this->request->email,
+            'password' => $this->request->password,
+        ];
+
+        if (Auth::attempt($credentials)) {
+            return redirect('/main')->with('success', 'Registered successfully');
+        }
+
         return back()->with('success', 'Register successfully');
     }
 
