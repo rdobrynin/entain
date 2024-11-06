@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
@@ -17,14 +18,17 @@ return new class extends Migration
             'name' => 'fake_',
             'email' => 'admin@test.com',
             'password' => self::PASSWORD,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ];
-
 
         for ($i=1; $i < 20; $i++) {
             $data = array_merge($data, [
                 'name' => 'fake_' . $i,
                 'email' => 'fake_' . $i . '@test.com',
                 'password' => self::PASSWORD,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]);
             DB::table('users')->insert(
                 $data

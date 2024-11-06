@@ -7,6 +7,9 @@ db:
 db_revert:
 	@docker exec roman-app php artisan migrate:rollback --step=1
 
+db_status:
+	@docker exec roman-app php artisan migrate:status
+
 run:
 	@composer install && docker compose up -d && echo 'Wait pls 5 seconds' && sleep 5s && docker exec roman-app php artisan migrate
 

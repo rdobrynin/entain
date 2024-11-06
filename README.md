@@ -27,6 +27,10 @@
 
 `make db_revert`
 
+### Show DB migration status
+
+`make db_status`
+
 ### Run tests
 
 `make test`
