@@ -18,6 +18,7 @@ class TodoResource extends JsonResource implements ITodoResource
         return [
             'id' => $this->id,
             'text' => $this->text,
+            'user' => $this->user,
             'is_completed' => $this->is_completed,
             'created_at' => $this->created_at->format('d/m/Y'),
             'updated_at' => $this->updated_at->format('d/m/Y'),

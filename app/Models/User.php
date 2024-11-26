@@ -2,15 +2,31 @@
 
 namespace App\Models;
 
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, HasApiTokens;
+
+
+    /**
+     * Get the todos for the blog post.
+     *
+     * Syntax: return $this->hasMany(Todo::class, 'foreign_key', 'local_key');
+     *
+     * Example: return $this->hasMany(Todo::class, 'user_id', 'id');
+     *
+     */
+    public function todos(): HasMany
+    {
+        return $this->hasMany(Todo::class);
+    }
 
     /**
      * The attributes that are mass assignable.

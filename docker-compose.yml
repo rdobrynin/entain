@@ -9,6 +9,8 @@ services:
     working_dir: /var/www/
     volumes:
       - ./:/var/www
+    environment:
+        - "PHP_IDE_CONFIG=serverName=entain-ta"
     networks:
       - app
 
