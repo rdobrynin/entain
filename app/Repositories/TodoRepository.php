@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Interfaces\Interfaces\TodoRepositoryInterface;
+use App\Interfaces\TodoRepositoryInterface;
 use App\Models\Todo;
 
 class TodoRepository implements TodoRepositoryInterface

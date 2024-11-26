@@ -31,7 +31,7 @@ class RegisterController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input)->assignRole('User');
-        $success = $this->getSuccess($user);
+        $success = $this->getSuccessMessage($user);
 
         return ApiResponseClass::sendResponse($success, 'User register successfully.', 201);
     }
@@ -40,7 +40,7 @@ class RegisterController extends Controller
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            $success = $this->getSuccess($user);
+            $success = $this->getSuccessMessage($user);
 
             return ApiResponseClass::sendResponse($success, 'User login successfully.', 200);
         } else {
@@ -48,7 +48,7 @@ class RegisterController extends Controller
         }
     }
 
-    public function getSuccess(?Authenticatable $user): array
+    public function getSuccessMessage(?Authenticatable $user): array
     {
         $success['token'] = $user->createToken('MyApp')->plainTextToken;
         $success['name'] = $user->name;

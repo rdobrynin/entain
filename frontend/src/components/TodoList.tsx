@@ -28,6 +28,10 @@ export const TodoList: FC = () => {
     const remove = (id: number) => {
         console.log(id);
     }
+
+    const edit = (id: number) => {
+        console.log(id);
+    }
     return (
         <>
             <table className="table table-sm">
@@ -37,7 +41,8 @@ export const TodoList: FC = () => {
                     <th scope="col">createdAt</th>
                     <th scope="col">Text</th>
                     <th scope="col" style={{width: '140px'}}>is completed</th>
-                    <th scope="col" style={{width: '80px'}}>Action</th>
+                    <th scope="col" style={{width: '40px'}}>Edit</th>
+                    <th scope="col" style={{width: '40px'}}>Remove</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,11 +58,16 @@ export const TodoList: FC = () => {
                             ) : (
                                 <>
                                     <button type="button" className="btn btn-primary  w-100"
-                                            onClick={() => complete(row.id)}><i className="bi bi-file-earmark-check"></i>
+                                            onClick={() => complete(row.id)}><i
+                                        className="bi bi-file-earmark-check"></i>
                                     </button>
                                 </>
                             )}</td>
-
+                            <td>
+                                <button type="button" className="btn btn-success btn-sm"
+                                        onClick={() => edit(row.id)}><i className="bi bi-pencil"></i>
+                                </button>
+                            </td>
                             <td>
                                 <button type="button" className="btn btn-danger btn-sm"
                                         onClick={() => remove(row.id)}><i className="bi bi-trash"></i>
@@ -67,13 +77,13 @@ export const TodoList: FC = () => {
                     ))
                 ) : (
                     <>
-                    <tr>
-                     <td>
-                         Loading
-                     </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                Loading
+                            </td>
+                        </tr>
                     </>
-                    )}
+                )}
                 </tbody>
             </table>
         </>

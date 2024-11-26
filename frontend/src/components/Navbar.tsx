@@ -1,8 +1,11 @@
 import {FC} from 'react';
 import {NavLink, useHistory} from "react-router-dom";
+import {getItemFromLocalStorage} from "../services/localStorageService.ts";
+import {AUTH_STATE} from "../constants.ts";
 
 export const Navbar: FC = () => {
     const history = useHistory();
+    const authData = getItemFromLocalStorage(AUTH_STATE);
     const logout = () => {
         localStorage.clear();
         history.push('/')
@@ -27,6 +30,9 @@ export const Navbar: FC = () => {
                                 <NavLink to={'/todo'} className={'nav-link'}>Todo</NavLink>
                             </li>
                         </ul>
+                        {authData && (
+                            <span className='px-2'>Hi, {authData.name}</span>
+                        )}
                         <button className='btn btn-danger' onClick={logout}>Logout</button>
                     </div>
                 </div>

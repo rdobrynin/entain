@@ -9,8 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTodoRequest;
 use App\Http\Requests\UpdateTodoRequest;
 use App\Http\Resources\TodoResource;
-use App\Interfaces\Interfaces\TodoRepositoryInterface;
+use App\Interfaces\TodoRepositoryInterface;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -21,11 +22,6 @@ class TodoController extends Controller
     public function __construct(TodoRepositoryInterface $todoRepositoryInterface)
     {
         $this->todoRepositoryInterface = $todoRepositoryInterface;
-        $this->middleware('auth');
-        $this->middleware('permission:view-product|create-product|edit-product|delete-product', ['only' => ['index', 'show']]);
-        $this->middleware('permission:create-product', ['only' => ['create', 'store']]);
-        $this->middleware('permission:edit-product', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:delete-product', ['only' => ['destroy']]);
     }
 
     public function index(): JsonResponse
@@ -63,6 +59,10 @@ class TodoController extends Controller
 
     public function update(UpdateTodoRequest $request, $id): JsonResponse
     {
+
+        if (! auth()->user()->hasPermissionTo('edit-todo')) {
+            return ApiResponseClass::throw('Error.', 'Not valid permission', 403);
+        }
         $updateDetails = [
             'text' => $request->text,
             'is_completed' => $request->is_completed,
@@ -82,8 +82,22 @@ class TodoController extends Controller
 
     public function destroy($id): JsonResponse
     {
+        if (! auth()->user()->hasPermissionTo('delete-todo')) {
+            return ApiResponseClass::throw('Error.', 'Not valid permission', 403);
+        }
         $this->todoRepositoryInterface->delete($id);
 
         return ApiResponseClass::sendResponse('Todo Delete Successful', '', 204);
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('permission:view-todo|create-todo|edit-todo|delete-todo', ['only' => ['index', 'show']]),
+            new Middleware('permission:create-todo', ['only' => ['create', 'store']]),
+            new Middleware('permission:edit-todo', ['only' => ['edit', 'update']]),
+            new Middleware('permission:delete-todo', ['only' => ['destroy']]),
+        ];
     }
 }
