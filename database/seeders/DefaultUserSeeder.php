@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,7 +17,7 @@ class DefaultUserSeeder extends Seeder
         $superAdmin = User::create([
             'name' => 'Roman SuperAdmin',
             'email' => 'user_1@entain.com',
-            'password' => Hash::make('11111111')
+            'password' => Hash::make('11111111'),
         ]);
         $superAdmin->assignRole('Super Admin');
 
@@ -26,16 +25,15 @@ class DefaultUserSeeder extends Seeder
         $admin = User::create([
             'name' => 'Roman Admin',
             'email' => 'user_2@entain.com',
-            'password' => Hash::make('11111111')
+            'password' => Hash::make('11111111'),
         ]);
         $admin->assignRole('Admin');
-
 
         // Creating Application User
         $user = User::create([
             'name' => 'Roman User',
             'email' => 'user_3@entain.com',
-            'password' => Hash::make('11111111')
+            'password' => Hash::make('11111111'),
         ]);
         $user->assignRole('User');
     }

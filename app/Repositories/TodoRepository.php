@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Repositories;
 
 use App\Interfaces\Interfaces\TodoRepositoryInterface;
@@ -19,12 +21,12 @@ class TodoRepository implements TodoRepositoryInterface
 
     public function store(array $data)
     {
-        $result =  new Todo();
+        $result = new Todo;
         $result->text = $data['text'];
         $result->user()->associate($data['user']);
         $result->save();
 
-        return  $result;
+        return $result;
     }
 
     public function update(array $data, $id)

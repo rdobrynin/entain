@@ -39,8 +39,8 @@ abstract class AbstractModel extends Model
         // Since every insert gets treated like a batch insert, we will make sure the
         // bindings are structured in a way that is convenient for building these
         // inserts statements by verifying the elements are actually an array.
-        if (!is_array(reset($values))) {
-            $values = array($values);
+        if (! is_array(reset($values))) {
+            $values = [$values];
         }
 
         // Since every insert gets treated like a batch insert, we will make sure the
@@ -56,7 +56,7 @@ abstract class AbstractModel extends Model
         // We'll treat every insert like a batch insert so we can easily insert each
         // of the records into the database consistently. This will make it much
         // easier on the grammars to just handle one type of record insertion.
-        $bindings = array();
+        $bindings = [];
 
         foreach ($values as $record) {
             foreach ($record as $value) {
@@ -67,7 +67,7 @@ abstract class AbstractModel extends Model
         $compiledInsertSql = $queryBuilder->getGrammar()->compileInsert($queryBuilder, $values);
 
         // important for POSTGRESQL to get IDs after insert
-        $compiledInsertSql .= " returning id";
+        $compiledInsertSql .= ' returning id';
 
         // returns array of objects where each property 'id' -> number
         $result = $queryBuilder->getConnection()->select($compiledInsertSql, $bindings);
@@ -76,7 +76,7 @@ abstract class AbstractModel extends Model
         // events are needed for UserTransaction model, otherwise wallet ledger
         // won't show any new record, because they are pulled from cache.
         // That cache is added in 'created' event
-        $currentTimestamp = new Carbon(); // make sure to add created_at and updated_at
+        $currentTimestamp = new Carbon; // make sure to add created_at and updated_at
         foreach ($insertedModels as $key => $model) {
             $model->setAttribute('updated_at', $currentTimestamp);
             $model->setAttribute('created_at', $currentTimestamp);
@@ -85,6 +85,7 @@ abstract class AbstractModel extends Model
             $model->fireModelEvent('created', false);
             $model->syncOriginal();
         }
+
         return $insertedModels;
     }
 
@@ -101,17 +102,11 @@ abstract class AbstractModel extends Model
         return $data;
     }
 
-    /**
-     * @return Builder
-     */
     public static function readOnly(): Builder
     {
         return static::on('pgsql_read')->getModel();
     }
 
-    /**
-     * @return bool
-     */
     public function isSoftDeletable(): bool
     {
         $traits = class_uses_recursive($this);

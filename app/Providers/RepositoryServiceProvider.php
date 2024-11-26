@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Interfaces\Interfaces\TodoRepositoryInterface;
@@ -13,7 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(TodoRepositoryInterface::class,TodoRepository::class);
+        $this->app->bind(TodoRepositoryInterface::class, TodoRepository::class);
     }
 
     /**

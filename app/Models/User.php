@@ -9,11 +9,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, HasApiTokens, HasRoles;
-
+    use HasApiTokens, HasFactory, HasRoles, Notifiable;
 
     /**
      * Get the todos for the blog post.
@@ -21,7 +21,6 @@ class User extends Authenticatable
      * Syntax: return $this->hasMany(Todo::class, 'foreign_key', 'local_key');
      *
      * Example: return $this->hasMany(Todo::class, 'user_id', 'id');
-     *
      */
     public function todos(): HasMany
     {
