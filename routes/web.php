@@ -1,27 +1,19 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ViewController;
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
-/* @var $router Router */
+Route::get('/{url}', function () {
+    $path = public_path('app/index.html');
+    abort_unless(file_exists($path), 400, 'Page is not Found!');
+    return file_get_contents($path);
+})
+    ->where('url', '(login|register|todo|users)')
+    ->name('frontend');
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $path = public_path('app/index.html');
+    abort_unless(file_exists($path), 400, 'Page is not Found!');
+    return file_get_contents($path);
+})
+    ->name('frontend');
 
-Route::group(['middleware' => 'guest'], function () {
-    Route::get('/register', [ViewController::class, 'register'])->name('register');
-    Route::post('/register', [AuthController::class, 'register'])->name('register');
-    Route::get('/login', [ViewController::class, 'login'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
-});
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/main', [MainController::class, 'index']);
-    Route::get('/admin', [MainController::class, 'admin']);
-    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
-});

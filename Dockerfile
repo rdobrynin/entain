@@ -67,4 +67,4 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 USER www
 
 # Set port for application
-EXPOSE 8000
+EXPOSE 4444

@@ -1,3 +1,9 @@
+run:
+	@composer install && docker compose up -d && echo 'Wait pls 5 seconds' && sleep 5s && docker exec roman-app php artisan migrate && cd frontend && yarn && yarn dev
+
+down:
+	@docker compose down --remove-orphans
+
 app_shell:
 	@docker exec -it roman-app bash
 
@@ -9,12 +15,6 @@ db_revert:
 
 db_status:
 	@docker exec roman-app php artisan migrate:status
-
-run:
-	@composer install && docker compose up -d && echo 'Wait pls 5 seconds' && sleep 5s && docker exec roman-app php artisan migrate
-
-down:
-	@docker compose down --remove-orphans
 
 test:
 	@docker exec roman-app php artisan test
