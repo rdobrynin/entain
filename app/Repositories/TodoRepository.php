@@ -11,7 +11,12 @@ class TodoRepository implements TodoRepositoryInterface
 {
     public function index()
     {
-        return Todo::all();
+
+        if (auth()->user()->hasRole('Admin')) {
+            return Todo::all();
+        }
+
+        return Todo::all()->where('user_id', auth()->id());
     }
 
     public function getById($id)
