@@ -11,6 +11,8 @@ import {ILoginState} from "../types/ILogin.ts";
 import {loginReducer} from "./reducers/loginReducer.ts";
 import {ITodoListState} from "../types/ITodoList.ts";
 import {todoListReducer} from "./reducers/todoListReducer.ts";
+import {IUserListState} from "../types/IUserList.ts";
+import {userListReducer} from "./reducers/userListReducer.ts";
 
 export interface IApplicationState {
   layout: ILayoutState;
@@ -18,11 +20,12 @@ export interface IApplicationState {
   login: ILoginState;
   healthCheck: IHealthCheckState;
   todoList: ITodoListState;
+  userList: IUserListState;
   router: RouterState;
 }
 
 export const createRootReducer = (history: History) =>
   combineReducers({
-    layout: layoutReducer, healthCheck: healthCheckReducer, signup: signupReducer, login: loginReducer, todoList: todoListReducer,
+    layout: layoutReducer, healthCheck: healthCheckReducer, signup: signupReducer, login: loginReducer, todoList: todoListReducer, userList: userListReducer,
     router: connectRouter(history),
   });

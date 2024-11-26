@@ -33,7 +33,7 @@ export const Navbar: FC = () => {
                         {authData && (
                             <span className='px-2'>Hi, {authData.name}</span>
                         )}
-                        <button className='btn btn-danger' onClick={logout}>Logout</button>
+                        <button className='btn btn-danger btn-sm' onClick={logout}>Logout</button>
                     </div>
                 </div>
             </nav>

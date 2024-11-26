@@ -5,6 +5,7 @@ import {healthCheckEpic} from "./healthCheck/healthCheckEpic.ts";
 import {signupEpic} from "./signup/signupEpic.ts";
 import {loginEpic} from "./login/loginEpic.ts";
 import {todoListEpic} from "./todoList/todoListEpic.ts";
+import {userListEpic} from "./userList/userListEpic.ts";
 
 const baseEpics = new BehaviorSubject(
   combineEpics(
@@ -13,6 +14,7 @@ const baseEpics = new BehaviorSubject(
       signupEpic,
       loginEpic,
       todoListEpic,
+      userListEpic,
   ),
 );
 
