@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Http\Controllers\API;
 
 use App\Classes\ApiResponseClass;
@@ -22,6 +22,11 @@ class TodoController extends Controller
     public function __construct(TodoRepositoryInterface $todoRepositoryInterface)
     {
         $this->todoRepositoryInterface = $todoRepositoryInterface;
+        $this->middleware('auth');
+        $this->middleware('permission:view-product|create-product|edit-product|delete-product', ['only' => ['index','show']]);
+        $this->middleware('permission:create-product', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-product', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-product', ['only' => ['destroy']]);
     }
     public function index(): JsonResponse
     {

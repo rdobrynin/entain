@@ -10,6 +10,9 @@ app_shell:
 db:
 	@docker exec roman-app php artisan migrate
 
+db_seed:
+	@docker exec roman-app php artisan db:seed
+
 db_revert:
 	@docker exec roman-app php artisan migrate:rollback --step=1
 
