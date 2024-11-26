@@ -44,8 +44,16 @@ RUN apt-get install -y libpq-dev \
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
 RUN apt-get install -y nodejs
 
+# Install Redis
+RUN pecl install redis
+RUN docker-php-ext-enable redis
+
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+#install xdebug
+RUN pecl install xdebug
+COPY 90-xdebug.ini "${PHP_INI_DIR}"/conf.d
 
 # Install Composer
 COPY --from=composer:2.3 /usr/bin/composer /usr/bin/composer
@@ -67,4 +75,4 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 USER www
 
 # Set port for application
-EXPOSE 8000
+#EXPOSE 4444

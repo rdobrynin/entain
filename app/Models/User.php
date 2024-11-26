@@ -3,21 +3,30 @@
 namespace App\Models;
 
 use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use Laravel\Sanctum\HasApiTokens;
 
-/**
- * @method static Builder|\Illuminate\Database\Query\Builder select($columns = ['*'])
- * @method static \Watson\Rememberable\Query\Builder where($column, $operator = null, $value = null, $boolean = 'and')
- * @method static \Watson\Rememberable\Query\Builder whereIn($column, $values, $boolean = 'and', $not = false)
- */
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, HasApiTokens;
+
+
+    /**
+     * Get the todos for the blog post.
+     *
+     * Syntax: return $this->hasMany(Todo::class, 'foreign_key', 'local_key');
+     *
+     * Example: return $this->hasMany(Todo::class, 'user_id', 'id');
+     *
+     */
+    public function todos(): HasMany
+    {
+        return $this->hasMany(Todo::class);
+    }
 
     /**
      * The attributes that are mass assignable.

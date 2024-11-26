@@ -40,18 +40,21 @@
 `make down`
 
 ## access URL
-http://localhost:8000
+http://localhost:4444
 
 ## PAGE STRUCTURE
 
 ### Login (Sign In page)
-- http://localhost:8000/login
+- http://localhost:4444/login
 
 ### Register (Sing up Page)
-- http://localhost:8000/register
+- http://localhost:44444/register
 
 ### Admin (Operations with Roles Page)
-- http://localhost:8000/admin
+- http://localhost:4444/roles
+- 
+### Admin (Operations with Roles Page)
+- http://localhost:4444/users
 
 ### Main (React TO-DO Page)
-- http://localhost:8000/main
+- http://localhost:8000/todo
