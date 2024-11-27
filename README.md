@@ -48,10 +48,6 @@
 User `_7_dummy_user@entain.com` with role User CAN NOT view and todo with remove action icons
 User `_8_dummy_user@entain.com` with role Admin CAN view todo with remove action icons
 
-### Roles and Permissions
-- `User` can only view-todo and edit todo
-- `Admin` can do all CRUD
-
 ### Predefined users
 
 - `user_1@entain.com` with role `ADMIN`
