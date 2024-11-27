@@ -1,6 +1,11 @@
+import {Permissions} from "./ILogin.ts";
+
 export interface ISignup extends ApiResponse {
-  token: string;
-  name: string;
+    token: string;
+    name: string;
+    role_id: number;
+    role_name: string;
+    permissions: Permissions[],
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ApiResponse = Record<string, any>;

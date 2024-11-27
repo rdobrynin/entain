@@ -4728,7 +4728,7 @@ react@^18.3.1:
   dependencies:
     loose-envify "^1.1.0"
 
-reactstrap@^9.2.2:
+reactstrap@^9.2.3:
   version "9.2.3"
   resolved "https://registry.yarnpkg.com/reactstrap/-/reactstrap-9.2.3.tgz#45f04617f996177081516a2376a0efc17c4f09f5"
   integrity sha512-1nXy7FIBIoOgXr3AIHOpgzcZXdj6rZE5YvNSPd1hYgwv8X64m6TAJsU0ExlieJdlRXhaRfTYRSZoTWa127b0gw==

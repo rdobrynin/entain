@@ -1,0 +1,7 @@
+.loader {
+  &:global(.spinner-border) {
+    border-width: 2px;
+    height: 16px;
+    width: 16px;
+  }
+}
