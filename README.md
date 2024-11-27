@@ -1,4 +1,4 @@
-# PHP 8+ and React Test Assignment
+# PHP 8 + and React + RxJS Redux Middleware Test Assignment
 - Laravel 11v
 - PostgreSQL 14.1
 - ReactJS with RxJS redux middleware via epics
