@@ -3,8 +3,6 @@ import { connectRouter, RouterState } from 'connected-react-router';
 import { History } from 'history';
 import { ILayoutState } from '../types/ILayout';
 import { layoutReducer } from './reducers/layoutReducer.ts';
-import { healthCheckReducer } from './reducers/healthCheckReducer.ts';
-import { IHealthCheckState } from '../types/IHealthCheck';
 import {ISignupState} from "../types/ISignup.ts";
 import {signupReducer} from "./reducers/signupReducer.ts";
 import {ILoginState} from "../types/ILogin.ts";
@@ -18,7 +16,6 @@ export interface IApplicationState {
   layout: ILayoutState;
   signup: ISignupState;
   login: ILoginState;
-  healthCheck: IHealthCheckState;
   todoList: ITodoListState;
   userList: IUserListState;
   router: RouterState;
@@ -26,6 +23,6 @@ export interface IApplicationState {
 
 export const createRootReducer = (history: History) =>
   combineReducers({
-    layout: layoutReducer, healthCheck: healthCheckReducer, signup: signupReducer, login: loginReducer, todoList: todoListReducer, userList: userListReducer,
+    layout: layoutReducer, signup: signupReducer, login: loginReducer, todoList: todoListReducer, userList: userListReducer,
     router: connectRouter(history),
   });

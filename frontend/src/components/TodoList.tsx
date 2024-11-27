@@ -109,7 +109,10 @@ export const TodoList: FC = () => {
                     <th scope="col">createdAt</th>
                     <th scope="col">Text</th>
                     <th scope="col" style={{width: '140px'}}>is completed</th>
-                    <th scope="col" style={{width: '40px'}}>Remove</th>
+                    {authData.role_name ==='Admin' && (
+                        <th scope="col" style={{width: '40px'}}>Remove</th>
+                    )}
+
                 </tr>
                 </thead>
                 <tbody>
@@ -130,11 +133,13 @@ export const TodoList: FC = () => {
                                     </button>
                                 </>
                             )}</td>
+                            {authData.role_name ==='Admin' && (
                             <td>
                                 <button type="button" className="btn btn-danger btn-sm"
                                         onClick={() => remove(row.id)}><i className="bi bi-trash"></i>
                                 </button>
                             </td>
+                                )}
                         </tr>
                     ))
                 ) : (

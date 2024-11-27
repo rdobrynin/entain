@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 
 import { IError } from '../../types/IError';
-import {ITodoList, ITodoListActionTypes, ITodoListState} from "../../types/ITodoList.ts";
+import {ITodoList} from "../../types/ITodoList.ts";
 import {IUserListActionTypes, IUserListState} from "../../types/IUserList.ts";
 
 export const initialState: IUserListState = {
@@ -10,6 +10,7 @@ export const initialState: IUserListState = {
   loading: true,
 };
 
+// @ts-ignore
 const userListReducer: Reducer<IUserListState> = (state = initialState, action) => {
   switch (action.type) {
     case IUserListActionTypes.FETCH_REQUEST: {

@@ -8,7 +8,7 @@ app_shell:
 	@docker exec -it roman-app bash
 
 db:
-	@docker exec roman-app php artisan migrate:fresh --seed
+	@docker exec roman-app php artisan migrate
 
 db_seed:
 	@docker exec roman-app php artisan db:seed
