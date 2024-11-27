@@ -19,13 +19,13 @@
 ### How to launch manually
 
 1. `composer install` install BE dependencies
-2. `docker compose up or (docker-comp0se run)` - depends version
-3. `docker exec roman-app php artisan migrate:fresh --seed`
-4. `yarn install` - add dependencies for root
+2. `yarn install` - add dependencies for root
+3. `docker compose up -d or (docker-compose up -d)` - depends version
+4. `docker exec roman-app php artisan migrate:fresh --seed`
 5. `cd frontend` - react located in /frontend folder
 6. `yarn install` - install FE dependencies
 7. `yarn dev` - start DEV FE 
-8open `http://localhost:3000/`
+8. open `http://localhost:3000/`
 
 ### [URls]()
 - `http://localhost:3000/register` - register page
