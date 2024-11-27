@@ -44,7 +44,7 @@
 
 #### Example
 
-User `_7_dummy_user@entain.com` with role Admin CAN NOT view and todo with remove action icons
+User `_7_dummy_user@entain.com` with role User CAN NOT view and todo with remove action icons
 User `_8_dummy_user@entain.com` with role Admin CAN view todo with remove action icons
 
 ### Roles and Permissions
