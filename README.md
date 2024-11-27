@@ -21,12 +21,13 @@
 1. `composer install` install BE dependencies
 2. `docker compose up or (docker-comp0se run)` - depends version
 3. `docker exec roman-app php artisan migrate:fresh --seed`
-4. `cd frontend` - react located in /frontend folder
-5. `yarn install` - install FE dependencies
-6. `yarn dev` - start DEV FE 
-7. open `http://localhost:3000/`
+4. `yarn install` - add dependencies for root
+5. `cd frontend` - react located in /frontend folder
+6. `yarn install` - install FE dependencies
+7. `yarn dev` - start DEV FE 
+8open `http://localhost:3000/`
 
-### URls
+### [URls]()
 - `http://localhost:3000/register` - register page
 - `http://localhost:3000/login` - login page
 - `http://localhost:3000/todo` - CRUD TODO

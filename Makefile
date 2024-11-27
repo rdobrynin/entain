@@ -1,5 +1,5 @@
 run:
-	@composer install && docker compose up -d && echo 'Wait pls 5 seconds' && sleep 5s && docker exec roman-app php artisan migrate:fresh --seed && cd frontend && yarn && yarn dev
+	@composer install && docker compose up -d && echo 'Wait pls 5 seconds' && sleep 5s && docker exec roman-app php artisan migrate:fresh --seed && yarn && cd frontend && yarn && yarn dev
 
 down:
 	@docker compose down --remove-orphans
